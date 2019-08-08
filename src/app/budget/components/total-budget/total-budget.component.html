@@ -1,0 +1,90 @@
+<div class="jumbotron">
+		<div class="container">
+		  <h1 class="display-3">Welcome To My Budget App</h1>
+		  <p></p>
+		</div>
+</div>
+
+<div class="container">
+	<div class="row row-margin-2">
+		<!-- 
+		<div class="col-1.8">Total Budget: </div>
+		<div class="col-1 budget-amount" 
+			*ngIf="!edit else updateBudget">
+			{{ totalBudget }}
+		</div>
+		<ng-template #updateBudget>
+				<input #budget
+						[(ngModel)]="totalBudget"
+					name="totalBudget"
+					id="newBudget"
+					type="number"
+					class="form-control" 
+					required [min]="0" />
+		</ng-template>
+
+		<div class="col-2.5">
+			<a class="btn btn-primary"
+			*ngIf="!edit else saveBudget"
+			(click)="edit = true;">Update</a>
+			<ng-template #saveBudget>
+				<a class="btn btn-primary"
+				(click)="edit = false;">Save</a>
+			</ng-template>
+		</div>
+		-->
+		<div class="col">
+			<div class="card text-center col-centered" style="width: 18rem; height: 10rem;">
+				<div class="card-body">
+					<h5 class="card-title">Total Budget Amount:</h5>
+
+					<p class="card-text"
+						*ngIf="!edit else updateBudget">
+						₪ {{ totalBudget }}
+					</p>
+					<ng-template #updateBudget>
+						<p class="card-text">
+							<mat-form-field class="example-full-width">
+								<input matInput #budget
+									[(ngModel)]="totalBudget"
+									name="totalBudget"
+									type="number"
+									class="form-control" 
+									required [min]="0" />
+							</mat-form-field>
+						</p>
+					</ng-template>
+
+					<a *ngIf="!edit else saveBudget"
+						href="#" 
+						(click)="edit = true;" 
+						class="btn btn-outline-secondary">
+						Edit
+					</a>
+					<ng-template #saveBudget>
+						<a href="#" 
+						(click)="edit = false;" 
+						class="btn btn-secondary">
+							Save
+						</a>
+					</ng-template>
+						</div>
+					</div>
+		</div>
+		
+		<div class="col">
+			<div class="card text-center col-centered" style="width: 18rem; height: 10rem;">
+				<div class="card-body">
+					<h5 class="card-title">Budget Remain:</h5>
+					<p class="card-text">₪ {{ totalBudget - totalAmt }}</p>
+				</div>
+			</div>
+			<div *ngIf="totalBudget - totalAmt < 0" 
+				class="alert alert-danger alert-dismissible fade show col-centered"
+				style="width: 18rem;"
+				 role="alert">
+				<strong>Holy guacamole!</strong> You should increase your badget or decrease your expenses.
+			</div>
+		</div>	
+	</div>		
+</div>

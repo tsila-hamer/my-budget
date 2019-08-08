@@ -1,0 +1,14 @@
+<div style="display: block" *ngIf="pieChartData">
+    <h2>Dashboard</h2>
+    <canvas
+        baseChart
+        [chartType]="'pie'"
+        [datasets]="pieChartData"
+        [labels]="pieChartLabels"
+        [options]="pieChartOptions"
+        [legend]="true"
+        [colors]="pieChartColor"
+        (chartClick)="onChartClick($event)">
+    </canvas>
+  </div>
+

@@ -1,0 +1,140 @@
+<total-budget [totalAmt] = "expensesList ? expensesList.totalAmt : 0"></total-budget>
+
+<table class="table table-hover .row-margin-2">
+    <thead>
+      <tr>
+        <th class="text-center">Expense Num</th>
+        <th class="text-center">Date</th>
+        <th class="text-center max-width-100">Category</th>
+        <th class="text-center">Total Amount</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody  *ngIf="expensesList">
+
+      <tr *ngFor="let expense of expensesList.expenses; let i = index">
+        <td class="text-center">{{ expense.expense_id + 1}}</td>
+
+        <td class="text-center"
+            *ngIf="expense.update_mode == false else updateDate">
+            {{ expense.expense_date | date:'shortDate'}}
+        </td>
+        <ng-template #updateDate>
+            <td class="col-centered">
+              <mat-form-field>
+                <mat-label>{{ expense.expense_date | date:'shortDate' }}</mat-label>
+                <input matInput 
+                  required
+                  [matDatepicker]="picker1"
+                  [(ngModel)]="expense.expense_date"
+                  >
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker [startAt]="expense.expense_date" #picker1></mat-datepicker>
+              </mat-form-field>
+            </td>
+          </ng-template>
+
+        <td class="text-center max-width-120"
+            *ngIf="expense.update_mode == false else updateCategory">
+            <img class= "category_img" src="{{ expense.category.category_icon }}" />
+            {{ expense.category.category_name }}
+        </td>
+        <ng-template #updateCategory>
+          <td class="col-centered">
+            <mat-form-field>
+              <mat-label>{{ expense.category.category_name }}</mat-label>
+              <mat-select [(ngModel)]="expense.category">
+                <mat-option *ngFor="let category of categories"
+                 [value]="category">
+                  {{category.category_name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <!--
+            <select [(ngModel)]="expense.category">
+                <option *ngFor="let category of categories"
+                [value]="category.category_name"
+                [selected]="category.category_name == expense.category.category_name">
+                  {{category.category_name}}
+                </option>
+            </select>
+            -->
+          </td>
+        </ng-template>
+
+        <td class="text-center" 
+            *ngIf="expense.update_mode == false else updateTotalAmt">
+            ₪ {{ expense.total_amt }}</td>
+        <ng-template #updateTotalAmt>
+          <td class="col-centered">
+            <mat-form-field class="example-full-width">
+              <input matInput [(ngModel)]="expense.total_amt"
+                value="expense.total_amt"
+                type="number">
+            </mat-form-field>
+          </td>
+        </ng-template>
+        
+
+        <td class="col-centered"
+          *ngIf="expense.update_mode == false else saveBtn">
+          <button type="button" class="btn btn-outline-dark" 
+              (click)="updateFields(expense.expense_id)">
+              Edit
+          </button>
+        </td>
+        <ng-template #saveBtn>
+            <td class="col-centered">
+              <button type="button" class="btn btn-dark" 
+                [disabled]="! expense.expense_date"
+                (click)="updateExpense(expense.expense_id,
+                                      expense.expense_date,
+                                      expense.category,
+                                      expense.total_amt)">
+                Save
+              </button>
+            </td>
+        </ng-template>
+
+        <td>
+          <a class="delete-button" (click)="delete(i)">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="text-center font-weight-bold">
+          ₪ {{ expensesList.totalAmt }}</td>
+        <td></td>
+      </tr>
+    </tbody>
+</table>
+
+<p class="expense-btn">
+    <button type="button" class="btn btn-outline-primary"
+    (click)="addNewExpense()">
+    New Expense
+    </button>
+</p>
+
+
+<!--
+<budget-pie-chart [pieChartLabels] = "getPieChartLabels()" [pieChartData] = "getPieChartData()">
+</budget-pie-chart>
+-->
+
+
+<a name="pie-chart"></a>
+<div class="container" *ngIf="expensesList">
+	<div class="row margin10">
+      <div class="col">   
+          <budget-pie-chart [totalAmtByCat]="expensesList.amtByCat"></budget-pie-chart>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+{"categories_list": [
+    {
+        "category_id": 1,
+        "category_name": "Shopping",
+        "category_icon": "https://image.flaticon.com/icons/svg/130/130302.svg"
+    },
+    {
+        "category_id": 2,
+        "category_name": "Food",
+        "category_icon": "https://www.flaticon.com/premium-icon/icons/svg/562/562678.svg"
+    },
+    {
+        "category_id": 3,
+        "category_name": "Gas Station",
+        "category_icon": "https://image.flaticon.com/icons/svg/115/115101.svg"
+    }
+]}
