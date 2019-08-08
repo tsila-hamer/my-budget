@@ -3,18 +3,21 @@ import { Expense } from './expense';
 export class ExpensesList {
 	expenses_list: {expenses: Expense[],
 					totalAmt: number,
-					amtByCat: any};
+					amtByCat: any,
+					amtByDate: any};
 
     /*if gets expenses list as a parameter, initialize this.expenses_list['expenses] 
     to be this list. else, initialize it to an empty list*/
 	constructor(private expensesList?: {expenses: Expense[],
 										totalAmt: number,
-										amtByCat: any}) {
+										amtByCat: any,
+										amtByDate:any}) {
 		this.expenses_list = expensesList ?
 		expensesList
 		: {expenses: [],
 		   totalAmt: 0,
-		   amtByCat: {}}
+		   amtByCat: {},
+		   amtByDate: {}}
 	}
 
 	get expenses(): Expense[] {
@@ -27,6 +30,10 @@ export class ExpensesList {
 
 	get amtByCat(): any {
 		return this.expenses_list['amtByCat'];
+	}
+
+	get amtByDate(): any {
+		return this.expenses_list['amtByDate'];
 	}
 
 	/*

@@ -59,6 +59,7 @@ export class BudgetTableComponent implements OnInit {
     this.ex_subscription = this.budgetService.getExpensesList().subscribe(
       expenses => {
         this.expensesList = expenses ? expenses : new ExpensesList();
+        console.log(this.expensesList);
       });
   }
 

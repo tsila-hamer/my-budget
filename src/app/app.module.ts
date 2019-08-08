@@ -8,6 +8,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { CoreModule } from './core/core.module';
 import { BudgetModule } from './budget/budget.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { BlogModule } from './budget-blog/blog.module';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { BlogModule } from './budget-blog/blog.module';
   ],
   imports: [
     BudgetModule,
+    DashboardModule,
     BlogModule,
     CoreModule,
     NgbModule,

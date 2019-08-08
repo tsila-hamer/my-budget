@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { DashboardModule } from './../dashboard/dashboard.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { TotalBudgetComponent } from './components/total-budget/total-budget.component';
 import { BudgetTableComponent } from './components/budget-table/budget-table.component';
-import { BudgetPieChartComponent } from './components/budget-pie-chart/budget-pie-chart.component';
 
 import { BudgetService } from './services/budget-service.service';
 
@@ -18,16 +18,16 @@ import {MatIconModule, MatNativeDateModule} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ErrorStateMatcher } from '@angular/material/core';
 
-import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
     TotalBudgetComponent,
-    BudgetTableComponent,
-    BudgetPieChartComponent],
+    BudgetTableComponent],
   imports: [
     CommonModule,
     FormsModule,
+    DashboardModule,
     BrowserAnimationsModule,
     ReactiveFormsModule ,
     MatSelectModule,
@@ -35,7 +35,6 @@ import { ChartsModule } from 'ng2-charts';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ChartsModule,
     HttpClientModule
     /*,
     RouterModule.forChild([
@@ -44,8 +43,7 @@ import { ChartsModule } from 'ng2-charts';
   ],
   exports: [
     TotalBudgetComponent,
-    BudgetTableComponent,
-    BudgetPieChartComponent
+    BudgetTableComponent
     ],
   providers:[
     BudgetService,
