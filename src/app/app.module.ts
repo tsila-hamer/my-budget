@@ -4,11 +4,21 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+import { CoreModule } from './core/core.module';
+import { BudgetModule } from './budget/budget.module';
+import { BlogModule } from './budget-blog/blog.module';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    BudgetModule,
+    BlogModule,
+    CoreModule,
+    NgbModule,
     BrowserModule,
     AppRoutingModule
   ],
