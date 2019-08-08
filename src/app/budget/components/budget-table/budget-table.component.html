@@ -124,18 +124,16 @@
 </p>
 
 
-<!--
-<budget-pie-chart [pieChartLabels] = "getPieChartLabels()" [pieChartData] = "getPieChartData()">
-</budget-pie-chart>
--->
-
-
-<a name="pie-chart"></a>
 <div class="container" *ngIf="expensesList">
-	<div class="row margin10">
+  <dashboard [expenses_list]="expensesList"></dashboard>
+</div>
+
+<!--
+
+  <div class="row margin10">
       <div class="col">   
           <budget-pie-chart [totalAmtByCat]="expensesList.amtByCat"></budget-pie-chart>
           <budget-line-chart [totalAmtByDate] = "expensesList.amtByDate"></budget-line-chart>
       </div>
   </div>
-</div>
+-->

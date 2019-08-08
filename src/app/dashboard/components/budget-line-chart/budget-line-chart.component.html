@@ -1,4 +1,5 @@
 <div style="display: block;" *ngIf="lineChartData">
+    <h3>Total Amount Spent By Date</h3>
     <canvas baseChart width="400" height="400"
       [datasets]="lineChartData"
       [labels]="lineChartLabels"
@@ -9,6 +10,3 @@
       [plugins]="lineChartPlugins">
     </canvas>
   </div>
-  
-<p>{{ totalAmtByDate }}</p>
-<p>{{ lineChartData }}</p>

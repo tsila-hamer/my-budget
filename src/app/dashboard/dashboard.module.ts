@@ -5,13 +5,15 @@ import { BudgetPieChartComponent } from '../dashboard/components/budget-pie-char
 
 import { ChartsModule } from 'ng2-charts';
 import { BudgetLineChartComponent } from './components/budget-line-chart/budget-line-chart.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 
 @NgModule({
   declarations: [
     BudgetPieChartComponent,
-    BudgetLineChartComponent
+    BudgetLineChartComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { BudgetLineChartComponent } from './components/budget-line-chart/budget-
   ],
   exports: [
     BudgetPieChartComponent,
-    BudgetLineChartComponent
+    BudgetLineChartComponent,
+    DashboardComponent
   ]
 })
 export class DashboardModule { }

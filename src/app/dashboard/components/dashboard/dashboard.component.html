@@ -1,0 +1,7 @@
+<div class="container" *ngIf="expenses_list">
+    <h1>Dashboard</h1>
+  
+          <budget-pie-chart [totalAmtByCat]="expenses_list.amtByCat"></budget-pie-chart>
+          <budget-line-chart [totalAmtByDate] = "expenses_list.amtByDate"></budget-line-chart>
+
+</div>
